@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe EmailsController do
-	subject { post :create, text: "this is email text" }
+	subject { post :create, :email => { text: "this is email text" } }
 
 	it "should have successful response" do
 		subject
