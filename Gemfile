@@ -46,3 +46,4 @@ end
 
 gem 'haml'
 gem 'rspec-rails', group: [:development, :test]
+gem 'imgkit'
