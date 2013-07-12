@@ -14,12 +14,20 @@ describe EmailsController do
 	# 	response.body.should == @expected
 	# end
 
-	it "should have url in json response no matter the request" do
-		subject
-		@expected = { url: "localhost:3000/assets/american-gothic.jpg" }.to_json
-		response.body.should == @expected
+	# it "should have url in json response no matter the request" do
+	# 	subject
+	# 	@expected = { url: "localhost:3000/assets/american-gothic.jpg" }.to_json
+	# 	response.body.should == @expected
+	# end
+
+	context "the link to the email" do
+		it "should exist" do
+		end
+		it "should have an ugly url" do 
+		end
 	end
 
-	
+	it "should have an image to load" do
+	end
 
 end

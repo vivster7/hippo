@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/FriendlyId/friendly_id.git
+  revision: a25368945623c14798920e3316117bc5bd359e10
+  branch: master
+  specs:
+    friendly_id (5.0.0.alpha1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -125,6 +132,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  friendly_id!
   haml
   imgkit
   jbuilder (~> 1.2)

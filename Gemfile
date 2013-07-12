@@ -47,3 +47,4 @@ end
 gem 'haml'
 gem 'rspec-rails', group: [:development, :test]
 gem 'imgkit'
+gem 'friendly_id', github: 'FriendlyId/friendly_id', branch: 'master'

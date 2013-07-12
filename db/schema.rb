@@ -11,12 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130710223610) do
+ActiveRecord::Schema.define(version: 20130711232418) do
 
   create_table "emails", force: true do |t|
     t.string   "text"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_url"
   end
+
+  add_index "emails", ["slug"], name: "index_emails_on_slug", unique: true
 
 end
