@@ -4,16 +4,19 @@ class EmailsController < ApplicationController
 	end
 
 	def create
-		name = SecureRandom.urlsafe_base64
-		email = Email.create!(text: params[:email][:text], image_url: name)
+		ugly_id = SecureRandom.urlsafe_base64
+		@email = Email.new(text: params[:email][:text], image_url: ugly_id)
 
-		html = email.text
-		kit = IMGKit.new(html)
-		file = kit.to_file('app/assets/images/'+name+'.jpg')
-		render inline: "<%=link_to 'Click here to see your email or load image below', 'http://localhost:3000/emails/#{email.image_url}'%><%=image_tag('#{name}.jpg')%>"
+		if @email.save!
+			EmailsWorker.perform_async(@email.id, ugly_id)	
+			redirect_to email_path(@email)
+		else
+			render :new
+		end
 	end
 
-	def index
+	def new
 		@email = Email.new
 	end
+
 end

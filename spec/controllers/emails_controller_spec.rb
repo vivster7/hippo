@@ -5,7 +5,8 @@ describe EmailsController do
 
 	it "should have successful response" do
 		subject
-		response.should be_success
+		expect(response).to be_success
+		expect(response.status).to eq(200)
 	end
 
 	# it "should be have json response" do
@@ -21,13 +22,21 @@ describe EmailsController do
 	# end
 
 	context "the link to the email" do
+		before do
+			subject
+		end
 		it "should exist" do
+			expect(response.body).to match /Email Text:/
 		end
 		it "should have an ugly url" do 
+			#regex matching /:id
+			expect(response.body).to_not match /(\/\d+)/
 		end
 	end
 
 	it "should have an image to load" do
+		subject
+		expect(response.body).to match /src=/
 	end
 
 end
