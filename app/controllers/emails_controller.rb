@@ -11,9 +11,9 @@ class EmailsController < ApplicationController
 		if @email.save!
 			#EmailsWorker.perform_async(@email.id, ugly_id)	
 			html = @email.text
-			kit = IMGKit.new(html)
+			kit = IMGKit.new(html, height: 0) #0 means calculated from page content
 			file = kit.to_file('app/assets/images/'+ugly_id+'.jpg')
-			render inline: "<%=image_tag('#{@email.image_url}'+'.jpg')%>"
+			render inline: "<%=image_tag('http://privacy.omadahealth.com:3000/assets/'+@email.image_url+'.jpg')%>"
 			# redirect_to email_path(@email)
 		else
 			render :new
