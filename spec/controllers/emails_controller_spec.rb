@@ -21,22 +21,20 @@ describe EmailsController do
 	# 	response.body.should == @expected
 	# end
 
-	context "the link to the email" do
+	context "the image in the email" do
 		before do
 			subject
 		end
+
 		it "should exist" do
-			expect(response.body).to match /Email Text:/
+			expect(response.body).to match /src=/
 		end
+
 		it "should have an ugly url" do 
 			#regex matching /:id
 			expect(response.body).to_not match /(\/\d+)/
 		end
 	end
 
-	it "should have an image to load" do
-		subject
-		expect(response.body).to match /src=/
-	end
 
 end
