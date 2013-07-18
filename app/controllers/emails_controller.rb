@@ -13,7 +13,7 @@ class EmailsController < ApplicationController
 			html = @email.text
 			kit = IMGKit.new(html)
 			file = kit.to_file('app/assets/images/'+ugly_id+'.jpg')
-			render inline: "<%=image_tag(@email.image_url+'.jpg')%>"
+			render inline: "<%=image_tag('#{@email.image_url}'+'.jpg')%>"
 			# redirect_to email_path(@email)
 		else
 			render :new
