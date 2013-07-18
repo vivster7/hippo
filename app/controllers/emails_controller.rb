@@ -1,6 +1,7 @@
 class EmailsController < ApplicationController
 	def show
 		@email = Email.friendly.find(params[:id].downcase)
+		render layout: false
 	end
 
 	def create
@@ -12,7 +13,8 @@ class EmailsController < ApplicationController
 			html = @email.text
 			kit = IMGKit.new(html)
 			file = kit.to_file('app/assets/images/'+ugly_id+'.jpg')
-			redirect_to email_path(@email)
+			render inline: "<%=image_tag('http://privacy.omadahealth.com:3000/assets/'+@email.image_url+'.jpg')%>"
+			# redirect_to email_path(@email)
 		else
 			render :new
 		end
