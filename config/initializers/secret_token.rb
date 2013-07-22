@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Hippo::Application.config.secret_key_base = 'ac0d46113d393ec821b99efb5799f8260018d23587feee6e02209673d98879c671745d28a8fe5805a025a3dd6c0b05ae908681de45015c5f38d1048839259386'
+Hippo::Application.config.secret_key_base = Secret.secret_key_base || 'ac0d46113d393ec821b99efb5799f8260018d23587feee6e02209673d98879c671745d28a8fe5805a025a3dd6c0b05ae908681de45015c5f38d1048839259386'

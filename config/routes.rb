@@ -6,4 +6,7 @@ Hippo::Application.routes.draw do
   resources :emails, only: [:show, :create, :new]
   
   mount Sidekiq::Web, at: '/sidekiq'
+
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+
 end

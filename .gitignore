@@ -17,3 +17,6 @@
 
 # Ignore all images for now.
 /app/assets/images
+
+# Ignore secrets
+config/secrets.yml
