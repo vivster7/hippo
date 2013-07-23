@@ -5,12 +5,13 @@ ENV['RESTRICT_DOMAIN'] = 'example.com'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'support/fixture_builder'
-
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+
+require 'support/fixture_builder'
+
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
