@@ -16,16 +16,9 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    puts registered?(params)
     unless registered?(params)
-      #params will be sent before login if they are sent directly from the extension.
-      if params.has_key? :email
-        if params[:email].has_key? :text
-          if params[:email].has_key? :account
-            render inline: "<%='http://localhost:3000/auth/gplus'%>"
-          end
-        end
-      #no params sent; accessing directly via web service
+      if requestFromExtension?
+        render inline: "<%='http://localhost:3000/auth/gplus'%>"
       else
         redirect_to auth_path unless current_user
       end
@@ -37,10 +30,21 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  #A registered user is any user with an email in the database.
   def registered?(params)
     if params.has_key? :email
       if params[:email].has_key? :account
         return User.where(email: params[:email][:account]).count == 1
+      end
+    end
+    return false
+  end
+
+  #Only requests from the extension will have the :account key
+  def requestFromExtension?
+    if params.has_key? :email
+      if params[:email].has_key? :account
+        return true
       end
     end
     return false
