@@ -10,7 +10,7 @@ class EmailsController < ApplicationController
 
 		if @email.save!
 			html = @email.text
-			kit = IMGKit.new(html, height: 0) #0 means calculated from page content
+			kit = IMGKit.new(html, height: 0, width: 564) #0 means calculated from page content
 			file = kit.to_file('app/assets/images/'+ugly_id+'.jpg')
 			render inline: "<%=image_tag('http://privacy.omadahealth.com:3000/assets/'+@email.image_url+'.jpg')%>"
 		else

@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20130722212246) do
   enable_extension "plpgsql"
 
   create_table "emails", force: true do |t|
-    t.string   "text"
+    t.text     "text"
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
