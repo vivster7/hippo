@@ -8,9 +8,6 @@ class User < ActiveRecord::Base
       where(email: auth_hash[:email]).first_or_create(auth_hash.slice(:first_name, :name))
     end
   end
-
-  def display_name
-    first_name || name || email
-  end
+  
 end
 
