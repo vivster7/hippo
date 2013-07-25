@@ -16,12 +16,9 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    if requestFromExtension?
-      unless registered?
-        render inline: "<%='http://localhost:3000/auth/gplus'%>"
-      end
-    else
-      redirect_to auth_path unless current_user
+    unless current_user
+      session[:pending_text] ||= email_params[:text]
+      redirect_to auth_path
     end
   end
 
@@ -30,25 +27,8 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-
-  #Only requests from the extension will have the :account key
-  def requestFromExtension?
-    if params.has_key? :email
-      if params[:email].has_key? :account
-        return true
-      end
-    end
-    return false
-  end
-
-  #A registered user is any user with an email in the database.
-  def registered?
-    if params.has_key? :email
-      if params[:email].has_key? :account
-        return User.where(email: params[:email][:account]).count == 1
-      end
-    end
-    return false
+  def email_params
+    params.require(:email).permit(:text) if params[:email]
   end
 
 end

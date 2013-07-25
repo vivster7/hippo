@@ -1,25 +1,21 @@
 class EmailsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
 	def show
-		@email = Email.friendly.find(params[:id].downcase)
-		render layout: false
+      #TODO: double check that friendly doesn't allow finding by db ID
+      @email = Email.friendly.find(params[:id].downcase)
+      render :show, layout: false
 	end
 
 	def create
-		ugly_id = SecureRandom.urlsafe_base64
-		@email = Email.new(text: params[:email][:text], image_url: ugly_id)
-
-		if @email.save!
-			html = @email.text
-			kit = IMGKit.new(html, height: 0, width: 564) #0 means calculated from page content
-			file = kit.to_file('app/assets/images/'+ugly_id+'.jpg')
-			render inline: "<%=image_tag('http://privacy.omadahealth.com:3000/assets/'+@email.image_url+'.jpg')%>"
-		else
-			render :new
-		end
+      if @email = Email.create(email_params)
+        render :show, layout: false
+      else
+        render :new
+      end
 	end
 
 	def new
-		@email = Email.new
+      @email = Email.new
 	end
 
 end
