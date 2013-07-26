@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	EMAIL_REGEX = /@#{Regexp.escape(ENV["RESTRICT_DOMAIN"] || "")}\z/
+  EMAIL_REGEX = /@#{Regexp.escape(ENV["RESTRICT_DOMAIN"] || "")}\z/
 
   validates :email, :format => {:with => EMAIL_REGEX }, :if => Proc.new { ENV["RESTRICT_DOMAIN"].present? }, :on => :create
 

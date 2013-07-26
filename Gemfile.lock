@@ -83,6 +83,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.7.7)
     multipart-post (1.2.0)
+    nokogiri (1.5.9)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -196,6 +197,7 @@ DEPENDENCIES
   imgkit
   jbuilder (~> 1.2)
   jquery-rails
+  nokogiri
   omniauth-gplus
   pg
   rails (= 4.0.0)

@@ -16,7 +16,7 @@
 /tmp
 
 # Ignore all images for now.
-/app/assets/images
+/app/assets/images/*.jpg
 
 # Ignore secrets
 config/secrets.yml

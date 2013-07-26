@@ -1,7 +1,7 @@
 class CreateEmails < ActiveRecord::Migration
   def change
     create_table :emails do |t|
-    	t.text	"text"
+    	t.string	"text"
     	t.string	"slug"
       t.timestamps
     end
