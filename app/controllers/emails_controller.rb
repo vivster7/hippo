@@ -1,7 +1,7 @@
 class EmailsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   def show
-    @email = Email.friendly.find(params[:id].downcase)
+    @email = Email.find_by_friendly_id(params[:id].downcase)
     render :show, layout: false
   end
 
