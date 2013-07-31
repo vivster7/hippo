@@ -57,6 +57,7 @@ GEM
     connection_pool (1.0.0)
     diff-lcs (1.2.4)
     erubis (2.7.0)
+    excon (0.25.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     faraday (0.8.7)
@@ -64,6 +65,17 @@ GEM
     fixture_builder (0.3.5)
       activerecord (>= 2)
       activesupport (>= 2)
+    fog (1.14.0)
+      builder
+      excon (~> 0.25.0)
+      formatador (~> 0.2.0)
+      mime-types
+      multi_json (~> 1.0)
+      net-scp (~> 1.1)
+      net-ssh (>= 2.1.3)
+      nokogiri (~> 1.5)
+      ruby-hmac
+    formatador (0.2.4)
     haml (4.0.2)
       tilt
     hashie (2.0.5)
@@ -87,6 +99,9 @@ GEM
     minitest (4.7.5)
     multi_json (1.7.7)
     multipart-post (1.2.0)
+    net-scp (1.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.6.8)
     nokogiri (1.5.9)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -144,6 +159,7 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    ruby-hmac (0.4.0)
     sass (3.2.9)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -197,6 +213,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   fixture_builder
+  fog
   friendly_id!
   haml
   imgkit

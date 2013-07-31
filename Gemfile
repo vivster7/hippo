@@ -52,6 +52,7 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
 gem 'carrierwave'
+gem 'fog'
 
 gem 'omniauth-gplus'
 gem 'secrets', :github => "austinfromboston/secrets"
