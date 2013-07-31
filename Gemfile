@@ -51,6 +51,7 @@ gem 'friendly_id', github: 'FriendlyId/friendly_id', branch: 'master'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+gem 'carrierwave'
 
 gem 'omniauth-gplus'
 gem 'secrets', :github => "austinfromboston/secrets"
