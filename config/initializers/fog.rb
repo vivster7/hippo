@@ -1,8 +1,8 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
     :provider               => 'AWS',                        # required
-    :aws_access_key_id      => Secret.AWS_access_key || ENV['AWS_access_key'],        # required
-    :aws_secret_access_key  => Secret.AWS_secret_key || ENV['AWS_secret_key'],        # required
+    :aws_access_key_id      => Secret.AWS_access_key || ENV['AWS_ACCESS_KEY'],        # required
+    :aws_secret_access_key  => Secret.AWS_secret_key || ENV['AWS_SECRET_KEY'],        # required
     :region                 => 'us-west-1',                  # optional, defaults to 'us-east-1'
   }
   config.fog_directory  = 'hipaa-hippo'                     # required
