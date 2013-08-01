@@ -16,7 +16,7 @@ class Email < ActiveRecord::Base
     end
 
     def create_image
-      file = Tempfile.new([self.ugly_image_id, 'jpg'], 'tmp', :encoding => 'ascii-8bit')
+      file = Tempfile.new([self.ugly_image_id, '.jpg'], 'tmp', :encoding => 'ascii-8bit')
       file.write(IMGKit.new(self.text, height: 0, quality: 50, width: 564).to_jpg)
       file.flush
       self.image = file

@@ -1,1 +1,2 @@
-= image_tag(@email.image.url)
+= image_tag(asset_url(@email.image.url), alt: "Image protected by Hippo")
+/ = image_tag(@email.image.url, alt: "Image protected by Hippo")
