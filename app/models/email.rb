@@ -16,6 +16,7 @@ class Email < ActiveRecord::Base
     end
 
     def create_image
+      add_hippo_protection_mark
       file = Tempfile.new([self.ugly_image_id, '.jpg'], 'tmp', :encoding => 'ascii-8bit')
       file.write(IMGKit.new(self.text, height: 0, quality: 50, width: 564).to_jpg)
       file.flush
@@ -26,6 +27,10 @@ class Email < ActiveRecord::Base
       # kit = IMGKit.new(text, height: 0, width: 564)
       # self.image = kit
       # kit.to_file('app/assets/images/'+filename)
+    end
+
+    def add_hippo_protection_mark
+      self.text = '<span STYLE="color: #999; font: 12pt courier; font-variant: small-caps;">Content protected by Hippo</span> <br />' + self.text
     end
 
 end
