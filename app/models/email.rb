@@ -5,10 +5,6 @@ class Email < ActiveRecord::Base
 
   after_create :generate_ugly_id, :create_image
 
-  def filename
-    ugly_image_id + '.jpg'
-  end
-
   private
 
     def generate_ugly_id
@@ -23,14 +19,10 @@ class Email < ActiveRecord::Base
       self.image = file
       self.save
       file.unlink
-      #TODO: User carrierwave to connect db with filesystem image.
-      # kit = IMGKit.new(text, height: 0, width: 564)
-      # self.image = kit
-      # kit.to_file('app/assets/images/'+filename)
     end
 
     def add_hippo_protection_mark
-      self.text = '<span STYLE="color: #999; font: 12pt courier; font-variant: small-caps;">Content protected by Hippo</span> <br />' + self.text
+      self.text = '<span STYLE="color: #999; font: 8pt courier; font-variant: small-caps;">Content protected by Hippo</span> <br />' + self.text
     end
 
 end

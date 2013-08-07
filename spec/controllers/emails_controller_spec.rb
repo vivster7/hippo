@@ -28,7 +28,7 @@ describe EmailsController do
 				subject
 				expect(Email.last.text).to eq("this is email text")				
 				expect(response.body).to_not match /^\/\d{1,3}$/
-				expect(Nokogiri.parse(response.body).css('img').first.attribute('src').value).to match(/assets\/#{Email.last.filename}/)
+				expect(Nokogiri.parse(response.body).css('img').first.attribute('src').value).to match(/assets\/#{Email.last.ugly_image_id}.jpg/)
 			end
 		end
 	end
