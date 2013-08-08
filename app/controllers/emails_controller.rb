@@ -1,6 +1,8 @@
 class EmailsController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  http_basic_authenticate_with :name => "gollum", :password => "smeagol", only: :authorized_show
+  http_basic_authenticate_with name:     Secret.basic_auth_name || ENV["BASIC_AUTH_NAME"], 
+                               password: Secret.basic_auth_pass || ENV["BASIC_AUTH_PASS"],
+                               only: :authorized_show
 
   def authorized_show
     send_file "uploads/email/image/#{params[:id]}/#{params[:image]}.jpg", :type => 'image/jpeg', :disposition => 'inline'

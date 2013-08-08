@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     sign_in(User.find_or_create_from_auth_hash(auth_hash))
     create_email
-    redirect_to @email || root_path
+    authorized_redirect
   end
 
   protected
@@ -24,6 +24,14 @@ class SessionsController < ApplicationController
 
   def clear_pending_text
     session.delete(:pending_text)
+  end
+
+  def authorized_redirect
+    if current_user
+      redirect_to @email || root_path
+    else
+      render text: "You are not authorized with Hippo."
+    end
   end
 
 end
