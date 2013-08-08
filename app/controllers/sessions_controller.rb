@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
     if current_user
       redirect_to @email || root_path
     else
-      render text: "You are not authorized with Hippo."
+      session[:pending_text] ? render status: 401 : render text: "You are not authorized on Hippo"
     end
   end
 

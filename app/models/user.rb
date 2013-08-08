@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  #TODO: REGEX work
   EMAIL_REGEX = /@#{Regexp.escape(ENV["RESTRICT_DOMAIN"] || "")}\z/
 
   validates :email, :format => {:with => EMAIL_REGEX }, 
