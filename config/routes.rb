@@ -8,6 +8,7 @@ Hippo::Application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
 
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
-  match '/uploads/email/image/*id/*image', to: 'emails#authorized_show', via: :get
+  match '/uploads/email/image/*id/*image/history', to: 'emails#history', via: :get
+  match '/uploads/email/image/*id/*image', to: 'emails#authorized_show', via: :get, as: 'history'
 
 end

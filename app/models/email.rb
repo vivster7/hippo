@@ -5,6 +5,8 @@ class Email < ActiveRecord::Base
 
   after_create :generate_ugly_id, :create_image
 
+  has_and_belongs_to_many :users
+
   private
 
     def generate_ugly_id

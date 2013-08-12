@@ -4,7 +4,15 @@ class EmailsController < ApplicationController
                                password: Secret.basic_auth_pass || ENV["BASIC_AUTH_PASS"],
                                only: :authorized_show
 
+  def history
+    email = Email.find(params[:id])
+    @users = email.users
+    render :history
+  end
+
   def authorized_show
+    email = Email.find(params[:id])
+    email.users << current_user
     send_file "uploads/email/image/#{params[:id]}/#{params[:image]}.jpg", :type => 'image/jpeg', :disposition => 'inline'
   end
   

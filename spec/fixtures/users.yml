@@ -4,12 +4,12 @@ default:
   first_name: Fake
   name: Fake User
   email: test@example.com
-  created_at: 2013-07-25 23:39:48.731008000 Z
-  updated_at: 2013-07-25 23:39:48.731008000 Z
+  created_at: 2013-08-12 22:18:49.654235000 Z
+  updated_at: 2013-08-12 22:18:49.654235000 Z
 another_user:
   id: 2
   first_name: Fakey faker
   name: Super Fake User
   email: test2@example.com
-  created_at: 2013-07-25 23:39:48.855406000 Z
-  updated_at: 2013-07-25 23:39:48.855406000 Z
+  created_at: 2013-08-12 22:18:49.871171000 Z
+  updated_at: 2013-08-12 22:18:49.871171000 Z
