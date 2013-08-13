@@ -13,8 +13,7 @@ class EmailsController < ApplicationController
   def authorized_show
     email = Email.find(params[:id])
     email.users << current_user
-    send_file "uploads/email/image/#{params[:id]}/#{params[:image]}", :type => 'image/jpeg', :disposition => 'inline' if File.exist?("#{params[:image]}")
-    render nothing: true
+    send_file "uploads/email/image/#{params[:id]}/#{params[:image]}.jpg", :type => 'image/jpeg', :disposition => 'inline' # if File.exist?("#{params[:image]}")
   end
 
   def show

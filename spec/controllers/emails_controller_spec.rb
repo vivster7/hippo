@@ -41,14 +41,16 @@ describe EmailsController do
 			end
 
 			context "with basic_auth access" do
+				
 				before do
+					controller.stub!(:send_file)
+					controller.stub!(:render)
 					subject
     			request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('gollum','smeagol')
 					get :authorized_show, { id: Email.last.id, image: Email.last.image }
 				end
 
-				it "should see the image/should increase the view count" do
-					expect(:send_file)
+				it "should increase the view count" do
 					expect { get :authorized_show, { id: Email.last.id, image: Email.last.image } }.to change{Email.last.users.count}.by(1)
 				end
 			end
