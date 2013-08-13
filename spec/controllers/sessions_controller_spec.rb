@@ -6,7 +6,6 @@ describe SessionsController do
       request.env['omniauth.auth'] = {info: {email: "test@example.com"}}
       get :create, provider: "gplus"
       response.should redirect_to(root_path)
-      #session[:watcher_id].should == watchers(:default).to_param
       session[:user_id].should == User.first.to_param
     end
 
@@ -14,7 +13,7 @@ describe SessionsController do
     	request.env['omniauth.auth'] = {info: {email: "test@example.com"}}
     	session[:pending_text] = "This is pending text"
     	get :create, provider: "gplus"
-    	response.should redirect_to Email.last
+    	Email.last.text.should == "This is pending text"
   	end
   end
 end
