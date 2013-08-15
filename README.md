@@ -33,7 +33,7 @@ Start the rails server:
 Visit the service at: http://localhost:3000 to register your email. 
 
 
-Download and install chrome extension: https://chrome.google.com/webstore/detail/ngcdmglndkbedhpocfnppnjididdbchd
+Download and install chrome extension: https://chrome.google.com/webstore/detail/afjapjagmajnlpndkenfhbpkempkclbb/
 
 
 Go to gmail and start sending private emails!
