@@ -3,8 +3,9 @@
 Hippo is a self-hosted open source project to you send private emails via gmail. It is self-hosted so images can be stored locally, maintaining the privacy of the original text.
 
 ## Install ##
-
-The current version of Hippo has already been configured for PostgreSQL. Install and start your Postgres database. Mac users can install it here: http://postgresapp.com/
+### Pre-requisites
+PostgreSQL: http://postgresapp.com/ (This link is for Mac OS X only)
+wkhtmltoimage: https://code.google.com/p/wkhtmltopdf/downloads/list
 
 Clone the repo:
 
@@ -18,9 +19,10 @@ Bundle the gems:
 
       $ bundle install
 
-Create the databases to use:
+Create/Migrate the databases to use:
 
       $ rake db:create
+      $ rake db:migrate
 
 Start the rails server:
 
@@ -34,6 +36,9 @@ Visit the service at: http://localhost:3000 to register your email.
 
 
 Download and install chrome extension: https://chrome.google.com/webstore/detail/afjapjagmajnlpndkenfhbpkempkclbb/
+
+
+If you are not running Hippo on the same machine you are using the extension, you will have to point the extension to the Hippo Web Service.
 
 
 Go to gmail and start sending private emails!
