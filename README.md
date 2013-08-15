@@ -1,8 +1,9 @@
-== README ==
+# README #
 
 Hippo is a self-hosted open source project to you send private emails via gmail. It is self-hosted so images can be stored locally, maintaining the privacy of the original text.
 
-== Install == 
+## Install ## 
+
 The current version of Hippo has already been configured for PostgreSQL. Install and start your Postgres database. Mac users can install it here: http://postgresapp.com/
 
 Clone the repo:
@@ -31,9 +32,9 @@ Download and install chrome extension:
 
 Go to gmail and start sending private emails!
 
-== Configuration ==
+# Configuration #
 
-=== To enable Google+ Oauth ==
+## To enable Google+ Oauth ##
 
 You will need to acquire a Google API key to run your local instance. 
 You can get one here: https://code.google.com/apis/console/b/0/?pli=1
@@ -46,7 +47,7 @@ Create a file in config/secrets.yml, with your Google API key:
 
 Google Auth is required for production mode.  *Do not check secrets.yml into the repository.*
 
-== To enable Basic HTTP Authorization ==
+## To enable Basic HTTP Authorization ##
 
 Create/edit config/secrets.yml, with your auth name and password:
 
