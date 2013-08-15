@@ -3,6 +3,9 @@ class Email < ActiveRecord::Base
   friendly_id :ugly_image_id, use: :slugged
   mount_uploader :image, ImageUploader
 
+  #This has to be an after_create because self.save is called
+  #in create_image. Self.save must be called in create_image
+  #to properly save the slug.
   after_create :generate_ugly_id, :create_image
 
   has_and_belongs_to_many :users
