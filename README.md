@@ -9,7 +9,7 @@ wkhtmltoimage: https://code.google.com/p/wkhtmltopdf/downloads/list
 
 Clone the repo:
 
-      $ git@github.com:vivster7/hippo.git
+      $ git clone https://github.com/vivster7/hippo.git
 
 Go to the root of the Hippo directory:
 
