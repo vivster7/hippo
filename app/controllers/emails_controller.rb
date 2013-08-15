@@ -1,6 +1,6 @@
 class EmailsController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  if basic_auth_exists?
+  if (Secret.basic_auth_name && Secret.basic_auth_pass) || (ENV["BASIC_AUTH_NAME"] && ENV["BASIC_AUTH_PASS"])
     http_basic_authenticate_with name:     Secret.basic_auth_name || ENV["BASIC_AUTH_NAME"], 
                                  password: Secret.basic_auth_pass || ENV["BASIC_AUTH_PASS"],
                                  only: :authorized_show
@@ -25,17 +25,11 @@ class EmailsController < ApplicationController
 
   def create
     @email = Email.create!(text: params[:email][:text])
-    render :show, layout: false
+    redirect_to email_path(@email.to_param)
   end
 
   def new
     @email = Email.new
   end
-
-  protected
-
-    def basic_auth_exists?
-      if (Secret.basic_auth_name && Secret.basic_auth_pass) || (ENV["BASIC_AUTH_NAME"] && ENV["BASIC_AUTH_PASS"])
-    end
 
 end
